@@ -1,7 +1,5 @@
 package webdriver;
 
-import static org.testng.Assert.assertEquals;
-
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -116,7 +114,7 @@ public class Topic_02_Xpath_CSS_Part_II_FindElement {
 		driver.findElement(By.xpath("//div[@class='account-cart-wrapper']//span[text()='Account']")).click();
 		driver.findElement(By.xpath("//a[@title='Log Out']")).click();
 		// Verify logo
-//		Assert.assertTrue(driver.findElement(By.cssSelector("img[src$='logo.pnj']")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.cssSelector("img[src$='logo.png']")).isDisplayed());
 		
 	}
 	
