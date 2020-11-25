@@ -1,5 +1,6 @@
 package webdriver;
 
+import java.io.IOException;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -24,6 +25,8 @@ public class Topic_14_Upload_File {
 	String image_02_path = source_folder +"\\uploadFiles\\" + image_name_02;
 	String image_03_path = source_folder +"\\uploadFiles\\" + image_name_03;
 	
+	String chrome_auto_it = source_folder + "\\autoIT\\chromeUploadOneTime.exe";
+	String chrome_auto_it_multiple = source_folder + "\\autoIT\\chromeUploadMultiple.exe";
 	
 	public void TC_01_Sendkey() {
 		driver = new FirefoxDriver();
@@ -67,8 +70,8 @@ public class Topic_14_Upload_File {
 		
 	}
 
-	@Test
-	public void TC_03_Sendkey() {
+	
+	public void TC_03_Sendkey_Go_File() {
 		System.setProperty("webdriver.chrome.driver", ".\\browserDrivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -92,7 +95,29 @@ public class Topic_14_Upload_File {
 	}
 	
 	@Test
-	public void TC_04_LoginFormDisplayed() {
+	public void TC_04_AutoIT() throws IOException {
+		System.setProperty("webdriver.chrome.driver", ".\\browserDrivers\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get("http://blueimp.github.io/jQuery-File-Upload/");
+		
+		driver.findElement(By.cssSelector(".fileinput-button")).click();
+		sleepInSecond(3);
+		Runtime.getRuntime().exec(new String[] {chrome_auto_it_multiple, image_01_path, image_02_path});
+	}
+	
+	
+	public void TC_05_Java_Robot() throws IOException {
+		System.setProperty("webdriver.chrome.driver", ".\\browserDrivers\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get("http://blueimp.github.io/jQuery-File-Upload/");
+		
+		driver.findElement(By.cssSelector(".fileinput-button")).click();
+		sleepInSecond(2);
+		
 		
 	}
 	
